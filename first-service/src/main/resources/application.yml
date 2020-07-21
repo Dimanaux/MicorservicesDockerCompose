@@ -1,0 +1,15 @@
+server:
+  port: 8357
+
+spring:
+  application:
+    name: first-service
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+    healthcheck:
+      enabled: true
+  instance:
+    prefer-ip-address: true

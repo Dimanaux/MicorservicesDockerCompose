@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: first-service-module
+          uri: http://first-service:8357
+          predicates:
+            - Path=/firstservice/**
+        - id: second-service-module
+          uri: http://second-service:8358
+          predicates:
+            - Path=/secondservice/**
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI}
+    healthcheck:
+      enabled: true
+  instance:
+    prefer-ip-address: true
+
+

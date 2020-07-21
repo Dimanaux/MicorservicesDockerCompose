@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  eureka:
+    build: ./eureka
+    ports:
+      - '8761:8761'
+
+  gateway:
+    build: ./gateway
+    ports:
+      - '8080:8080'
+    depends_on:
+      - eureka
+    environment:
+      - EUREKA_URI=http://eureka:8761/eureka
+
+  first-service:
+    build: ./first-service
+    ports:
+      - '8357:8357'
+    depends_on:
+      - eureka
+    environment:
+      - EUREKA_URI=http://eureka:8761/eureka
+
+
+  second-service:
+    build: ./second-service
+    ports:
+      - '8358:8358'
+    depends_on:
+      - eureka
+    environment:
+      - EUREKA_URI=http://eureka:8761/eureka
+

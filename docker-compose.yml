@@ -9,7 +9,7 @@ services:
   gateway:
     build: ./gateway
     ports:
-      - '8080:8080'
+      - '${GATEWAY_PORT}:8080'
     depends_on:
       - eureka
     environment:

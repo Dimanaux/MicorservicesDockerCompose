@@ -1,3 +1,3 @@
 # MicorservicesDockerCompose
 
-GATEWAY_PORT=8081 docker-compose up
+Для запуска приложения: GATEWAY_PORT=8081 docker-compose up
